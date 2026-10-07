@@ -115,6 +115,8 @@ function gameObject() {
     };
 }
 
+//function to return points scored with player name as input
+
 function numPointsScored(playerName){
     const game= gameObject();
     for(let team of Object.values(game)){
@@ -129,6 +131,7 @@ function numPointsScored(playerName){
 console.log(numPointsScored("Brendan Hayword"));
 
 
+//function to return shoe size with player name as input
 function shoeSize(playerName){
     const game= gameObject();
     for (let team of Object.values(game)){
@@ -143,6 +146,9 @@ function shoeSize(playerName){
 }
 console.log(shoeSize("Ben Gordon"));
 
+
+//function to return team color with team name as input
+
 function teamColors(teamName){
     const game= gameObject();
     for(let team of Object.values(game)){
@@ -152,3 +158,75 @@ function teamColors(teamName){
     }
 }
 console.log(teamColors("Charlotte Hornets"));
+
+//teamNames(): Returns an array of both team names.
+/*function teamNames(){
+    const game=gameObject();
+}
+*/
+function teamNames() {
+    const game = gameObject();
+    const names = [];
+
+    for (let team of Object.values(game)) {
+        names.push(team.teamName);
+    }
+
+    return names;
+}
+
+console.log(teamNames());
+
+//playerNumbers(teamName): Takes a team name as input and returns an array of all players’ jersey numbers on that team.
+function playerNumbers(teamName){
+    const game= gameObject();
+    for(let team of Object.values(game)){
+        if (team.teamName=== teamName){
+            const numbers= [];
+            for (let player of Object.values(team.players)){
+                numbers.push(player.number);
+            }
+            return numbers;
+        }
+    }       
+
+}
+
+console.log(playerNumbers("Brooklyn Nets"));
+
+
+//playerStats(playerName): Takes a player’s name as input and returns an object with all stats for that player.
+function playerStats(playerName){
+    const game= gameObject();
+    for (let team of Object.values(game)){
+        for (let [name, player] of Object.entries(team.players)){
+            if (name=== playerName){
+                return player;
+            }
+        }
+    }
+}
+console.log(playerStats("Brook Lopez"));
+
+/*bigShoeRebounds(): Returns the number of rebounds for the player with the largest shoe size.
+
+Steps:
+Identify the player with the largest shoe size.
+Return that player’s rebounds.*/
+function bigShoeRebounds(){
+    const game= gameObject();
+    let largestShoeSize= 0;
+    let rebounds= 0;
+    
+    for (let team of Object.values(game)){
+        for (let player of Object.values(team.players)){
+            if (player.shoe> largestShoeSize){
+                largestShoeSize= player.shoe;
+                rebounds= player.rebounds;
+            }
+        }
+    }
+    return rebounds;    
+}
+
+console.log(bigShoeRebounds());
