@@ -114,3 +114,41 @@ function gameObject() {
         },
     };
 }
+
+function numPointsScored(playerName){
+    const game= gameObject();
+    for(let team of Object.values(game)){
+        for (let [ name,player] of Object.entries(team.players)){
+            if (name=== playerName){
+                return player.points;
+            }
+        }
+
+    }
+}
+console.log(numPointsScored("Brendan Hayword"));
+
+
+function shoeSize(playerName){
+    const game= gameObject();
+    for (let team of Object.values(game)){
+        for (let [name, player] of Object.entries(team.players)){
+            if (name=== playerName){
+                return player.shoe;
+            }
+        }
+
+
+    }
+}
+console.log(shoeSize("Ben Gordon"));
+
+function teamColors(teamName){
+    const game= gameObject();
+    for(let team of Object.values(game)){
+        if (team.teamName=== teamName){
+            return team.colors;
+        }
+    }
+}
+console.log(teamColors("Charlotte Hornets"));
